@@ -57,7 +57,7 @@ class _AdminAddProductState extends ConsumerState<AdminAddProduct> {
               labelText: 'Price',
               hintText: 'Price',
             ),
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
                 onPressed: () => _addProduct(),
                 child: const Text("Add Product")),

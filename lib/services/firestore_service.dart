@@ -10,10 +10,23 @@ class FirestoreService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Future<void> addProduct(Product product) async {
+    final docId = firestore.collection("products").doc().id;
     await firestore
         .collection("products")
-        .add(product.toJson())
-        .then((value) => print(value))
-        .catchError((error) => print("Error"));
+        .doc(docId).set(product.toJson(docId));
+  }
+
+  Future<void> deleteProduct(String id) async {
+    await firestore.collection("products").doc(id).delete();
+  }
+
+  Stream<List<Product>> getProducts() {
+    return firestore
+        .collection("products") // gets collection
+        .snapshots() // gets snapshots, loop through
+        .map((snapshot) => snapshot.docs.map((doc) {
+              final d = doc.data();
+              return Product.fromJson(d);
+            }).toList()); // build a list out of the products mapping
   }
 }

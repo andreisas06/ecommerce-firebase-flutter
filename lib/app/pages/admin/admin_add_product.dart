@@ -2,6 +2,7 @@ import 'package:ecommerce_firebase/app/providers.dart';
 import 'package:ecommerce_firebase/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../widgets/custom_input_field.dart';
 
@@ -59,8 +60,25 @@ class _AdminAddProductState extends ConsumerState<AdminAddProduct> {
             ),
             const Spacer(),
             ElevatedButton(
-                onPressed: () => _addProduct(),
-                child: const Text("Add Product")),
+              onPressed: () => _addProduct(),
+              child: const Text("Add Product"),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+              onPressed: (() => _addProduct()),
+              child: const Text("Add Product"),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            // ElevatedButton(
+            //     onPressed: (() async {
+            //       final image = await ImagePicker()
+            //           .pickImage(source: ImageSource.gallery);
+            //     }),
+            //     child: child)
           ],
         ),
       ),

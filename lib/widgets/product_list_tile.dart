@@ -31,7 +31,7 @@ class ProductListTile extends StatelessWidget {
         },
         child: Container(
           width: screenSize.width,
-          height: 75,
+          height: 100,
           padding: const EdgeInsets.all(15.0),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -49,7 +49,7 @@ class ProductListTile extends StatelessWidget {
               ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(product.imageUrl,
-                      height: 59, fit: BoxFit.cover)),
+                      height: 70, width: 70, fit: BoxFit.fill)),
               const SizedBox(
                 width: 15,
               ),

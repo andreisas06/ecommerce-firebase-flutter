@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:ecommerce_firebase/app/providers.dart';
 import 'package:ecommerce_firebase/models/product.dart';
+import 'package:ecommerce_firebase/utils/snackbars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -41,6 +42,8 @@ class _AdminAddProductState extends ConsumerState<AdminAddProduct> {
         price: double.parse(priceEditingController.text),
         imageUrl: imgUrl,
       ));
+
+      openWarningSnackBar(context, "Product Added", Icon(Icons.done));
 
       Navigator.pop(context);
     }

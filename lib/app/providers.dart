@@ -1,4 +1,5 @@
 import 'package:ecommerce_firebase/services/firestore_service.dart';
+import 'package:ecommerce_firebase/services/storage_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,4 +20,12 @@ final databaseProvider = Provider<FirestoreService?>(((ref) {
   }
 }));
 
+final storageProvider = Provider<StorageService>(((ref) {
+  final auth = ref.watch(authStateChangeProv);
+  String? uid = auth.asData?.value?.uid;
 
+  if (uid != null) {
+    return StorageService(uid: uid);
+  }
+  throw Exception("user not found");
+}));

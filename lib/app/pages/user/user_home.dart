@@ -1,3 +1,6 @@
+import 'package:ecommerce_firebase/app/providers.dart';
+import 'package:ecommerce_firebase/widgets/product_banner.dart';
+import 'package:ecommerce_firebase/widgets/user_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,9 +12,23 @@ class UserHome extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
-            children: [],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              UserTopBar(
+                leadingButton: IconButton(
+                  icon: const Icon(Icons.logout),
+                  onPressed: (() {
+                    ref.watch(firebaseAuthProv).signOut();
+                  }),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ProductBanner(),
+            ],
           ),
         ),
       ),

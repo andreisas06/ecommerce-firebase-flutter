@@ -13,7 +13,8 @@ class FirestoreService {
     final docId = firestore.collection("products").doc().id;
     await firestore
         .collection("products")
-        .doc(docId).set(product.toJson(docId));
+        .doc(docId)
+        .set(product.toJson(docId));
   }
 
   Future<void> deleteProduct(String id) async {

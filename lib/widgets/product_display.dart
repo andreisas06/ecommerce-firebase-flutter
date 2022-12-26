@@ -4,6 +4,7 @@ import 'package:ecommerce_firebase/utils/extensions/capitalize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../app/pages/product/product_detail.dart';
 import 'empty_widget.dart';
 
 class ProductsDisplay extends ConsumerWidget {
@@ -31,11 +32,11 @@ class ProductsDisplay extends ConsumerWidget {
                     final product = snapshot.data![index];
                     return GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) =>
-                        //             ProductDetail(product: product)));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ProductDetail(product: product)));
                       },
                       child: Container(
                         padding: const EdgeInsets.all(10.0),

@@ -1,3 +1,4 @@
+import 'package:ecommerce_firebase/models/basket.dart';
 import 'package:ecommerce_firebase/services/firestore_service.dart';
 import 'package:ecommerce_firebase/services/storage_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,4 +29,8 @@ final storageProvider = Provider<StorageService>(((ref) {
     return StorageService(uid: uid);
   }
   throw Exception("user not found");
+}));
+
+final basketProvider = ChangeNotifierProvider<Basket>(((ref) {
+  return Basket();
 }));
